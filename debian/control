@@ -1,15 +1,19 @@
-Source: template-repository
-Section: unknown
+Source: bashdb
+Section: devel
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: xiangzelong <xiangzelong@deepin.org>
+Uploaders: xiangzelong <xiangzelong@deepin.org>
+Build-Depends: debhelper-compat (= 13), dh-python, python3, texinfo, quilt, bash (>=5.2),
+ libreadline-dev [linux-any], bash-builtins [linux-any]
+Standards-Version: 4.6.0
+Homepage: http://bashdb.sourceforge.net/
+Vcs-Git: https://github.com/deepin-community/bashdb
+Vcs-Browser: https://github.com/rocky/bashdb.git
 
-Package: template-repository
+Package: bashdb
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Depends: bash (>=5.2), ${misc:Depends}, python3
+Description: BASH debugger
+ A debgger for bash (the Bourne again shell). As with any debugger it allows
+ you to set through a bash script, examine data, set break points and run the
+ program to that point, change variable values and so on.

@@ -1,0 +1,13 @@
+Document: bashdb
+Title: bashdb
+Author: Nicholas Bamber
+Abstract: bashdb is a debugger for the bash shell.
+ For example use 'bashdb script.sh'.
+Section: Programming/bash
+
+Format: HTML
+Index: /usr/share/doc/bashdb/bashdb.html/index.html
+Files: /usr/share/doc/bashdb/bashdb.html/* /usr/share/doc/bashdb/bashdb-man.html
+
+Format: Text
+Files: /usr/share/doc/bashdb/TODO.Debian

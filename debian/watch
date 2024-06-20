@@ -1,0 +1,4 @@
+version=3
+opts=dversionmangle=s/\+ds$// \
+http://sf.net/bashdb/bashdb-([0-9.]*)-([0-9.]*)\.tar\.gz \
+	debian sh debian/repack.stub

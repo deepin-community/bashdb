@@ -1,4 +1,35 @@
 #!/usr/bin/make -f
 
+PACKAGE = $(shell dh_listpackages)
+TMP     = $(CURDIR)/debian/$(PACKAGE)
+ARCH_OS	= $(shell dpkg-architecture -qDEB_HOST_ARCH_OS)
+EXTRA_SUBSTVARS =
+
+CONFIG_OPTS = --prefix=/usr --infodir=/usr/share/info --mandir=/usr/share/man
+ifeq ($(ARCH_OS),linux)
+	CONFIG_OPTS +=  --with-bash-src=/usr/include/bash/
+else
+	EXTRA_SUBSTVARS += -Vshlibs:Depends=
+endif
+
 %:
-	dh $@
+	dh $@ 
+
+override_dh_auto_configure:
+	dh_auto_configure -- $(CONFIG_OPTS)
+
+override_dh_installdocs:
+	makeinfo --html --output=doc/bashdb.html doc/bashdb.texi
+	dh_installdocs
+
+override_dh_auto_install:
+	dh_auto_install
+ifeq ($(ARCH_OS),linux)
+	rm -rf $(TMP)/usr/share/bashdb/builtin
+endif
+
+override_dh_auto_test:
+	VERBOSE=1 dh_auto_test
+
+override_dh_gencontrol:
+	dh_gencontrol -- $(EXTRA_SUBSTVARS)
