@@ -1,0 +1,8 @@
+# This file is sourced into bash and so does not actually
+# need to be executable nor is the shebang relevant.
+bashdb: unusual-interpreter usr/share/bashdb/getopts_long.sh #!/bin/echo
+bashdb: script-not-executable usr/share/bashdb/getopts_long.sh
+
+# This file implements functionality that displays license information
+# to the user. Therefore it should not be removed.
+bashdb: extra-license-file usr/share/bashdb/command/show_sub/copying.sh
